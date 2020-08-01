@@ -5,6 +5,7 @@ public class AceitadoraDeConexao extends Thread
 {
     private ServerSocket        pedido;
     private ArrayList<Parceiro> usuarios;
+    
 
     public AceitadoraDeConexao
     (String porta, ArrayList<Parceiro> usuarios)
@@ -52,13 +53,15 @@ public class AceitadoraDeConexao extends Thread
             }
             catch (Exception erro)
             {} // sei que passei parametros corretos para o construtor
-            supervisoraDeConexao.start();
+            if(vivo)
+            	supervisoraDeConexao.start();
         }
 
     }
     
     public void morra() {
-    	supervisoraDeConexao.morra();
+    	if(supervisoraDeConexao != null)
+    		supervisoraDeConexao.morra();
     	vivo = false;
     }
 }

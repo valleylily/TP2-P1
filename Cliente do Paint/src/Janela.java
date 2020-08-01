@@ -11,7 +11,7 @@ public class Janela extends JFrame                                              
 {            
 	//-----//
 	public static final String HOST_PADRAO  = "localhost";
-	public static final int    PORTA_PADRAO = 3000;
+	public static final int    PORTA_PADRAO = 40000;
 	//-----//
     protected static final long serialVersionUID = 1L;                                                              //N�mero de s�rie da classe.
                                                                                                                     //-----Declara��o de atributos:
@@ -419,7 +419,8 @@ public class Janela extends JFrame                                              
               
               Vector<String> desenhos = desenho.getFiguras();
               figuras = new Vector<Figura>();
-              
+
+        	  pnlDesenho.getGraphics().clearRect(0, 0, pnlDesenho.getWidth(), pnlDesenho.getHeight());
               for(int i=0 ; i < desenhos.size(); i++)
         	  {
             	  String figuraAtual = desenhos.elementAt(i);
@@ -447,7 +448,6 @@ public class Janela extends JFrame                                              
             		  break;
             	  }
             	  figuras.add(i, figuraFinal);
-            	  pnlDesenho.getGraphics().clearRect(0, 0, pnlDesenho.getWidth(), pnlDesenho.getHeight());
             	  figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics()); 
         	  }
               try {

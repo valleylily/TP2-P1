@@ -1,11 +1,27 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
+
+import javax.swing.*;
 
 public class Servidor
 {
-	public static String PORTA_PADRAO = "3000";
+	public static String PORTA_PADRAO = "40000";
+    private static AceitadoraDeConexao aceitadoraDeConexao = null;
+	private static JFrame frame = new JFrame();
+    private static boolean vivo = true;
 	
-    public static void main (String[] args)
+    @SuppressWarnings("deprecation")
+	public static void main (String[] args)
     {
+    	frame.setSize(200, 200);
+    	JButton btnMorra = new JButton("Morra");
+    	Matadora matadora = new Matadora();
+    	btnMorra.addActionListener(matadora);
+    	frame.show();
+    	
+    	frame.add(btnMorra);
+    	
     	System.out.println("Rodando, irmão");
         if (args.length>1)
         {
@@ -21,7 +37,6 @@ public class Servidor
         ArrayList<Parceiro> usuarios =
         new ArrayList<Parceiro> ();
 
-        AceitadoraDeConexao aceitadoraDeConexao=null;
         try
         {
             aceitadoraDeConexao =
@@ -33,13 +48,21 @@ public class Servidor
             System.err.println ("Escolha uma porta apropriada e liberada para uso!\n");
             return;
         }
-        for(boolean vivo = true;vivo;) {
-        	String comando = Teclado.getUmString();
-        	if(comando == "morra") {
-        		aceitadoraDeConexao.morra();
-        		vivo = false;
-        	}
-        }
+        for(;vivo;) {}
         System.exit(0);
     }
+    @SuppressWarnings("deprecation")
+	private static void morra() {
+    	if(aceitadoraDeConexao != null)
+    		aceitadoraDeConexao.morra();
+    	frame.hide();
+		vivo = false;
+		
+    }
+    private static class Matadora implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			morra();
+		}
+	}
 }
