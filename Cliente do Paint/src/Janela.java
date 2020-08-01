@@ -6,27 +6,27 @@ import java.io.*;                                                               
 import java.net.Socket;
 import java.util.*;            
 // T
-//INÍCIO DA CLASSE!                                                                                                
-public class Janela extends JFrame                                                                                   //Início da classe janela.
+//INï¿½CIO DA CLASSE!                                                                                                
+public class Janela extends JFrame                                                                                   //Inï¿½cio da classe janela.
 {            
 	//-----//
 	public static final String HOST_PADRAO  = "localhost";
 	public static final int    PORTA_PADRAO = 3000;
 	//-----//
-    protected static final long serialVersionUID = 1L;                                                              //Número de série da classe.
-                                                                                                                    //-----Declaração de atributos:
-    protected JButton btnPonto     = new JButton ("Ponto"),                                                        //Botão para desenhar ponto;
-                      btnLinha     = new JButton ("Linha"),                                                        //Botão para desenhar linha;
-                      btnCirculo   = new JButton ("Circulo"),                                                      //Botão para desenhar círculo;
-                      btnElipse    = new JButton ("Elipse"),                                                       //Botão para desenhar elipse;
-                      btnCorFigura = new JButton ("Fora"),                                                         //Botão para escolher a cor do contorno da figura;
-                      btnCorDentro = new JButton ("Dentro"),                                                       //Botão para escolhr a cor do preenchimento da figura;
-                      btnAbrir     = new JButton ("Abrir"),                                                        //Botão para abrir uma imagem sua;
-                      btnRetangulo = new JButton ("Retângulo"),                                                    //Botão para desenhar um retângulo;
-                      btnQuadrado  = new JButton ("Quadrado"),                                                     //Botão para desenhar um quadrado;
-                      btnSalvar    = new JButton ("Salvar");                                                       //Botão para salvar a sua imagem;
+    protected static final long serialVersionUID = 1L;                                                              //Nï¿½mero de sï¿½rie da classe.
+                                                                                                                    //-----Declaraï¿½ï¿½o de atributos:
+    protected JButton btnPonto     = new JButton ("Ponto"),                                                        //Botï¿½o para desenhar ponto;
+                      btnLinha     = new JButton ("Linha"),                                                        //Botï¿½o para desenhar linha;
+                      btnCirculo   = new JButton ("Circulo"),                                                      //Botï¿½o para desenhar cï¿½rculo;
+                      btnElipse    = new JButton ("Elipse"),                                                       //Botï¿½o para desenhar elipse;
+                      btnCorFigura = new JButton ("Fora"),                                                         //Botï¿½o para escolher a cor do contorno da figura;
+                      btnCorDentro = new JButton ("Dentro"),                                                       //Botï¿½o para escolhr a cor do preenchimento da figura;
+                      btnAbrir     = new JButton ("Abrir"),                                                        //Botï¿½o para abrir uma imagem sua;
+                      btnRetangulo = new JButton ("Retï¿½ngulo"),                                                    //Botï¿½o para desenhar um retï¿½ngulo;
+                      btnQuadrado  = new JButton ("Quadrado"),                                                     //Botï¿½o para desenhar um quadrado;
+                      btnSalvar    = new JButton ("Salvar");                                                       //Botï¿½o para salvar a sua imagem;
                                                                                                                    //
-    protected MeuJPanel pnlDesenho = new MeuJPanel ();                                                             //Painel onde os desenhos serão feitos;
+    protected MeuJPanel pnlDesenho = new MeuJPanel ();                                                             //Painel onde os desenhos serï¿½o feitos;
                                                                                                                    //
     protected JLabel statusBar1 = new JLabel ("Mensagem:"),                                                        //Barra que sinaliza mensagens;
                      statusBar2 = new JLabel ("Coordenada:");                                                      //Barra inferior que sinaliza coordenadas do cursor;
@@ -34,176 +34,176 @@ public class Janela extends JFrame                                              
     protected Color corFigura = Color.BLACK;                                                                       //Cor de contorno, iniciada com preto;
     protected Color corDentro = new Color(0, 0, 0, 1);                                                             //Cor de preenchimento, iniciada transparente;
                                                                                                                    //
-    protected boolean dentro = false;                                                                              //Variável que indica se a figura deve ou não ser preenchida;
-    protected boolean arrastado = false;                                                                           //Variável que indica se o cursor foi arrastado;
+    protected boolean dentro = false;                                                                              //Variï¿½vel que indica se a figura deve ou nï¿½o ser preenchida;
+    protected boolean arrastado = false;                                                                           //Variï¿½vel que indica se o cursor foi arrastado;
                                                                                                                    //
-    protected Ponto p1;                                                                                            //Variável destinada a guardar um ponto posteriormente
+    protected Ponto p1;                                                                                            //Variï¿½vel destinada a guardar um ponto posteriormente
                                                                                                                    //
-    protected Situacao situacao = Situacao.DEFAULT;                                                                //Enumeração que registra qual a situação de edição em que o
+    protected Situacao situacao = Situacao.DEFAULT;                                                                //Enumeraï¿½ï¿½o que registra qual a situaï¿½ï¿½o de ediï¿½ï¿½o em que o
                                                                                                                    //                                       programa se encontra;
     protected Vector<Figura> figuras = new Vector<Figura>();                                                       //Vetor do Java usado para guardar as Figuras criadas;
 //-----------------------------------------------------------------------------------------------------------Construtor:
     public Janela ()                                                                                                //Construtor da Janela;
     {                                                                                                              //
-        super("Editor Gráfico");                                                                                   //
+        super("Editor Grï¿½fico");                                                                                   //
                                                                                                                    //
         try                                                                                                        //Tenta:
         {                                                                                                         //
-            Image btnAbrirImg = ImageIO.read(getClass().getResource("resources/abrir.jpg"));                      //pegar o ícone do botão Abrir da pasta "resources do programa";
-            btnAbrir.setIcon(new ImageIcon(btnAbrirImg));                                                         //colocar o ícone no botão Abrir;
+            Image btnAbrirImg = ImageIO.read(getClass().getResource("resources/abrir.jpg"));                      //pegar o ï¿½cone do botï¿½o Abrir da pasta "resources do programa";
+            btnAbrir.setIcon(new ImageIcon(btnAbrirImg));                                                         //colocar o ï¿½cone no botï¿½o Abrir;
         }                                                                                                         //
-        catch (IOException e)                                                                                      //Caso dê errado:
+        catch (IOException e)                                                                                      //Caso dï¿½ errado:
         {                                                                                                         //
             JOptionPane.showMessageDialog (null,                                                                  //exibimos uma mensagem
-                                           "Arquivo abrir.jpg não foi encontrado",                                //dizendo que não encontramos o arquivo do ícone,
+                                           "Arquivo abrir.jpg nï¿½o foi encontrado",                                //dizendo que nï¿½o encontramos o arquivo do ï¿½cone,
                                            "Arquivo de imagem ausente",                                           //entitulada sugerindo isso,
                                            JOptionPane.WARNING_MESSAGE);                                          //do tipo de aviso;
         }                                                                                                         //
                                                                                                                    //
         try                                                                                                        //Tenta:
         {                                                                                                         //
-            Image btnSalvarImg = ImageIO.read(getClass().getResource("resources/salvar.jpg"));                    //pegar o ícone do botão Salvar da pasta "resources do programa"; 
-            btnSalvar.setIcon(new ImageIcon(btnSalvarImg));                                                       //colocar o ícone no botão Salvar;                                
+            Image btnSalvarImg = ImageIO.read(getClass().getResource("resources/salvar.jpg"));                    //pegar o ï¿½cone do botï¿½o Salvar da pasta "resources do programa"; 
+            btnSalvar.setIcon(new ImageIcon(btnSalvarImg));                                                       //colocar o ï¿½cone no botï¿½o Salvar;                                
         }                                                                                                         //
-        catch (IOException e)                                                                                      //Caso dê errado: 
+        catch (IOException e)                                                                                      //Caso dï¿½ errado: 
         {                                                                                                         //
             JOptionPane.showMessageDialog (null,                                                                  //exibimos uma mensagem                          
-                                           "Arquivo salvar.jpg não foi encontrado",                               //dizendo que não encontramos o arquivo do ícone,
+                                           "Arquivo salvar.jpg nï¿½o foi encontrado",                               //dizendo que nï¿½o encontramos o arquivo do ï¿½cone,
                                            "Arquivo de imagem ausente",                                           //entitulada sugerindo isso,                     
                                            JOptionPane.WARNING_MESSAGE);                                          //do tipo de aviso;                              
         }                                                                                                         //
                                                                                                                    //
         try                                                                                                        //Tenta:
         {                                                                                                         //
-            Image btnPontoImg = ImageIO.read(getClass().getResource("resources/ponto.jpg"));                      //pegar o ícone do botão Imagem da pasta "resources do programa"; 
-            btnPonto.setIcon(new ImageIcon(btnPontoImg));                                                         //colocar o ícone no botão Imagem;                                
+            Image btnPontoImg = ImageIO.read(getClass().getResource("resources/ponto.jpg"));                      //pegar o ï¿½cone do botï¿½o Imagem da pasta "resources do programa"; 
+            btnPonto.setIcon(new ImageIcon(btnPontoImg));                                                         //colocar o ï¿½cone no botï¿½o Imagem;                                
         }                                                                                                         //
-        catch (IOException e)                                                                                      //Caso dê errado: 
+        catch (IOException e)                                                                                      //Caso dï¿½ errado: 
         {                                                                                                         //
             JOptionPane.showMessageDialog (null,                                                                  //exibimos uma mensagem                          
-                                           "Arquivo ponto.jpg não foi encontrado",                                //dizendo que não encontramos o arquivo do ícone,
+                                           "Arquivo ponto.jpg nï¿½o foi encontrado",                                //dizendo que nï¿½o encontramos o arquivo do ï¿½cone,
                                            "Arquivo de imagem ausente",                                           //entitulada sugerindo isso,                     
                                            JOptionPane.WARNING_MESSAGE);                                          //do tipo de aviso;                              
         }                                                                                                         //
                                                                                                                    //
         try                                                                                                        //Tenta:
         {                                                                                                         //
-            Image btnLinhaImg = ImageIO.read(getClass().getResource("resources/linha.jpg"));                      //pegar o ícone do botão Linha da pasta "resources do programa"; 
-            btnLinha.setIcon(new ImageIcon(btnLinhaImg));                                                         //colocar o ícone no botão Linha;                                
+            Image btnLinhaImg = ImageIO.read(getClass().getResource("resources/linha.jpg"));                      //pegar o ï¿½cone do botï¿½o Linha da pasta "resources do programa"; 
+            btnLinha.setIcon(new ImageIcon(btnLinhaImg));                                                         //colocar o ï¿½cone no botï¿½o Linha;                                
         }                                                                                                         //
-        catch (IOException e)                                                                                      //Caso dê errado: 
+        catch (IOException e)                                                                                      //Caso dï¿½ errado: 
         {                                                                                                         //
             JOptionPane.showMessageDialog (null,                                                                  //exibimos uma mensagem                          
-                                           "Arquivo linha.jpg não foi encontrado",                                //dizendo que não encontramos o arquivo do ícone,
+                                           "Arquivo linha.jpg nï¿½o foi encontrado",                                //dizendo que nï¿½o encontramos o arquivo do ï¿½cone,
                                            "Arquivo de imagem ausente",                                           //entitulada sugerindo isso,                     
                                            JOptionPane.WARNING_MESSAGE);                                          //do tipo de aviso;                              
         }                                                                                                         //
                                                                                                                    //
         try                                                                                                        //Tenta:
         {                                                                                                         //
-            Image btnCirculoImg = ImageIO.read(getClass().getResource("resources/circulo.jpg"));                  //pegar o ícone do botão Círculo da pasta "resources do programa"; 
-            btnCirculo.setIcon(new ImageIcon(btnCirculoImg));                                                     //colocar o ícone no botão Círculo;                                
+            Image btnCirculoImg = ImageIO.read(getClass().getResource("resources/circulo.jpg"));                  //pegar o ï¿½cone do botï¿½o Cï¿½rculo da pasta "resources do programa"; 
+            btnCirculo.setIcon(new ImageIcon(btnCirculoImg));                                                     //colocar o ï¿½cone no botï¿½o Cï¿½rculo;                                
         }                                                                                                         //
-        catch (IOException e)                                                                                      //Caso dê errado: 
+        catch (IOException e)                                                                                      //Caso dï¿½ errado: 
         {                                                                                                         //
             JOptionPane.showMessageDialog (null,                                                                  //exibimos uma mensagem                          
-                                           "Arquivo circulo.jpg não foi encontrado",                              //dizendo que não encontramos o arquivo do ícone,
+                                           "Arquivo circulo.jpg nï¿½o foi encontrado",                              //dizendo que nï¿½o encontramos o arquivo do ï¿½cone,
                                            "Arquivo de imagem ausente",                                           //entitulada sugerindo isso,                     
                                            JOptionPane.WARNING_MESSAGE);                                          //do tipo de aviso;                              
         }                                                                                                         //
                                                                                                                    //
         try                                                                                                        //Tenta:
         {                                                                                                         //
-            Image btnElipseImg = ImageIO.read(getClass().getResource("resources/elipse.jpg"));                    //pegar o ícone do botão Elipse da pasta "resources do programa"; 
-            btnElipse.setIcon(new ImageIcon(btnElipseImg));                                                       //colocar o ícone no botão Elipse;                                
+            Image btnElipseImg = ImageIO.read(getClass().getResource("resources/elipse.jpg"));                    //pegar o ï¿½cone do botï¿½o Elipse da pasta "resources do programa"; 
+            btnElipse.setIcon(new ImageIcon(btnElipseImg));                                                       //colocar o ï¿½cone no botï¿½o Elipse;                                
         }                                                                                                         //
-        catch (IOException e)                                                                                      //Caso dê errado: 
+        catch (IOException e)                                                                                      //Caso dï¿½ errado: 
         {                                                                                                         //
             JOptionPane.showMessageDialog (null,                                                                  //exibimos uma mensagem                          
-                                           "Arquivo elipse.jpg não foi encontrado",                               //dizendo que não encontramos o arquivo do ícone,
+                                           "Arquivo elipse.jpg nï¿½o foi encontrado",                               //dizendo que nï¿½o encontramos o arquivo do ï¿½cone,
                                            "Arquivo de imagem ausente",                                           //entitulada sugerindo isso,                     
                                            JOptionPane.WARNING_MESSAGE);                                          //do tipo de aviso;                              
         }                                                                                                         //
                                                                                                                    //
         try                                                                                                        //Tenta:
         {                                                                                                         //
-            Image btnCorFiguraImg = ImageIO.read(getClass().getResource("resources/cores.jpg"));                  //pegar o ícone do botão CorFora da pasta "resources do programa"; 
-            btnCorFigura.setIcon(new ImageIcon(btnCorFiguraImg));                                                 //colocar o ícone no botão CorFora;                                
+            Image btnCorFiguraImg = ImageIO.read(getClass().getResource("resources/cores.jpg"));                  //pegar o ï¿½cone do botï¿½o CorFora da pasta "resources do programa"; 
+            btnCorFigura.setIcon(new ImageIcon(btnCorFiguraImg));                                                 //colocar o ï¿½cone no botï¿½o CorFora;                                
         }                                                                                                         //
-        catch (IOException e)                                                                                      //Caso dê errado: 
+        catch (IOException e)                                                                                      //Caso dï¿½ errado: 
         {                                                                                                         //
             JOptionPane.showMessageDialog (null,                                                                  //exibimos uma mensagem                          
-                                           "Arquivo cores.jpg não foi encontrado",                                //dizendo que não encontramos o arquivo do ícone,
+                                           "Arquivo cores.jpg nï¿½o foi encontrado",                                //dizendo que nï¿½o encontramos o arquivo do ï¿½cone,
                                            "Arquivo de imagem ausente",                                           //entitulada sugerindo isso,                     
                                            JOptionPane.WARNING_MESSAGE);                                          //do tipo de aviso;                              
         }                                                                                                         //
                                                                                                                    //
         try                                                                                                        //Tenta:
         {                                                                                                         //
-            Image btnCorDentroImg = ImageIO.read(getClass().getResource("resources/cores.jpg"));                  //pegar o ícone do botão CorDentro da pasta "resources do programa"; 
-            btnCorDentro.setIcon(new ImageIcon(btnCorDentroImg));                                                 //colocar o ícone no botão CorDentro;                                
+            Image btnCorDentroImg = ImageIO.read(getClass().getResource("resources/cores.jpg"));                  //pegar o ï¿½cone do botï¿½o CorDentro da pasta "resources do programa"; 
+            btnCorDentro.setIcon(new ImageIcon(btnCorDentroImg));                                                 //colocar o ï¿½cone no botï¿½o CorDentro;                                
         }                                                                                                         //
-        catch (IOException e)                                                                                      //Caso dê errado: 
+        catch (IOException e)                                                                                      //Caso dï¿½ errado: 
         {                                                                                                         //
             JOptionPane.showMessageDialog (null,                                                                  //exibimos uma mensagem                          
-                                           "Arquivo cores.jpg não foi encontrado",                                //dizendo que não encontramos o arquivo do ícone,
+                                           "Arquivo cores.jpg nï¿½o foi encontrado",                                //dizendo que nï¿½o encontramos o arquivo do ï¿½cone,
                                            "Arquivo de imagem ausente",                                           //entitulada sugerindo isso,                     
                                            JOptionPane.WARNING_MESSAGE);                                          //do tipo de aviso;                              
         }                                                                                                         //
 		        																								   //
 		try                                                                                                        //Tenta:
 		{                                                                                                         //
-			Image imgRetangulo = ImageIO.read(getClass().getResource("resources/retangulo.png"));                 //pegar o ícone do botão CorDentro da pasta "resources do programa"; 
-			btnRetangulo.setIcon(new ImageIcon(imgRetangulo));                                                    //colocar o ícone no botão CorDentro;                                
+			Image imgRetangulo = ImageIO.read(getClass().getResource("resources/retangulo.png"));                 //pegar o ï¿½cone do botï¿½o CorDentro da pasta "resources do programa"; 
+			btnRetangulo.setIcon(new ImageIcon(imgRetangulo));                                                    //colocar o ï¿½cone no botï¿½o CorDentro;                                
 		}                                                                                                         //
-		catch (IOException e)                                                                                      //Caso dê errado: 
+		catch (IOException e)                                                                                      //Caso dï¿½ errado: 
 		{                                                                                                         //
 			JOptionPane.showMessageDialog (null,                                                                  //exibimos uma mensagem                          
-			"Arquivo retangulo.jpg não foi encontrado",                                                           //dizendo que não encontramos o arquivo do ícone,
+			"Arquivo retangulo.jpg nï¿½o foi encontrado",                                                           //dizendo que nï¿½o encontramos o arquivo do ï¿½cone,
 			"Arquivo de imagem ausente",                                                                          //entitulada sugerindo isso,                     
 			JOptionPane.WARNING_MESSAGE);                                                                         //do tipo de aviso;                              
 		}                                                                                                         //
 		                                                                                                           //
 		try                                                                                                        //Tenta:
 		{                                                                                                         //
-			Image imgQuadrado = ImageIO.read(getClass().getResource("resources/quadrado.png"));                   //pegar o ícone do botão CorDentro da pasta "resources do programa"; 
-			btnQuadrado.setIcon(new ImageIcon(imgQuadrado));                                                     //colocar o ícone no botão CorDentro;                                
+			Image imgQuadrado = ImageIO.read(getClass().getResource("resources/quadrado.png"));                   //pegar o ï¿½cone do botï¿½o CorDentro da pasta "resources do programa"; 
+			btnQuadrado.setIcon(new ImageIcon(imgQuadrado));                                                     //colocar o ï¿½cone no botï¿½o CorDentro;                                
 		}                                                                                                         //
-		catch (IOException e)                                                                                      //Caso dê errado: 
+		catch (IOException e)                                                                                      //Caso dï¿½ errado: 
 		{                                                                                                         //
 			JOptionPane.showMessageDialog (null,                                                                  //exibimos uma mensagem                          
-			"Arquivo quadrado.jpg não foi encontrado",                     								          //dizendo que não encontramos o arquivo do ícone,
+			"Arquivo quadrado.jpg nï¿½o foi encontrado",                     								          //dizendo que nï¿½o encontramos o arquivo do ï¿½cone,
 			"Arquivo de imagem ausente",                                    							          //entitulada sugerindo isso,                     
 			JOptionPane.WARNING_MESSAGE);                                                                         //do tipo de aviso;                              
 		}                                                                                                         //
                                                                                                                    //
                                                                                                                    //
-        btnPonto.addActionListener     (new DesenhoDePonto());                                                     //Adicionamos um tratamento de eventos ao botão Ponto;
-        btnLinha.addActionListener     (new DesenhoDeReta ());                                                     //Adicionamos um tratamento de eventos ao botão Linha;
-        btnCirculo.addActionListener   (new DesenhoDeCirculo());                                                   //Adicionamos um tratamento de eventos ao botão Círculo;
-        btnElipse.addActionListener    (new DesenhoDeElipse());                                                    //Adicionamos um tratamento de eventos ao botão Elipse;
-        btnRetangulo.addActionListener (new DesenhoDeRetangulo());                                                 //Adicionamos um tratamento de eventos ao botão CorFora;  
-        btnQuadrado.addActionListener  (new DesenhoDeQuadrado());                                                  //Adicionamos um tratamento de eventos ao botão CorDentro;
-        btnCorFigura.addActionListener (new PegarCorDeFora());                                                     //Adicionamos um tratamento de eventos ao botão CorFora;
-        btnCorDentro.addActionListener (new PegarCorDeDentro());                                                   //Adicionamos um tratamento de eventos ao botão Elipse;
+        btnPonto.addActionListener     (new DesenhoDePonto());                                                     //Adicionamos um tratamento de eventos ao botï¿½o Ponto;
+        btnLinha.addActionListener     (new DesenhoDeReta ());                                                     //Adicionamos um tratamento de eventos ao botï¿½o Linha;
+        btnCirculo.addActionListener   (new DesenhoDeCirculo());                                                   //Adicionamos um tratamento de eventos ao botï¿½o Cï¿½rculo;
+        btnElipse.addActionListener    (new DesenhoDeElipse());                                                    //Adicionamos um tratamento de eventos ao botï¿½o Elipse;
+        btnRetangulo.addActionListener (new DesenhoDeRetangulo());                                                 //Adicionamos um tratamento de eventos ao botï¿½o CorFora;  
+        btnQuadrado.addActionListener  (new DesenhoDeQuadrado());                                                  //Adicionamos um tratamento de eventos ao botï¿½o CorDentro;
+        btnCorFigura.addActionListener (new PegarCorDeFora());                                                     //Adicionamos um tratamento de eventos ao botï¿½o CorFora;
+        btnCorDentro.addActionListener (new PegarCorDeDentro());                                                   //Adicionamos um tratamento de eventos ao botï¿½o Elipse;
         //---------------//
-        btnSalvar.addActionListener    (new SalvarDesenho());                                                      //Adicionamos um tratamento de eventos ao botão Salvar;                                                                                                               
-        btnAbrir.addActionListener     (new AbrirDesenho());                                                       //Adicionamos um tratamento de eventos ao botão Abrir;                                                                                                               
+        btnSalvar.addActionListener    (new SalvarDesenho());                                                      //Adicionamos um tratamento de eventos ao botï¿½o Salvar;                                                                                                               
+        btnAbrir.addActionListener     (new AbrirDesenho());                                                       //Adicionamos um tratamento de eventos ao botï¿½o Abrir;                                                                                                               
         //--------------//
         JPanel     pnlBotoes = new JPanel();                                                                       //Instanciamos um novo painel;
         FlowLayout flwBotoes = new FlowLayout();                                                                   //Instanciamos um novo Layout;
         pnlBotoes.setLayout (flwBotoes);                                                                           //Colocamos o layout criado no novo painel;
                                                                                                                    //
-        pnlBotoes.add (btnAbrir);                                                                                  //Adicionamos ao novo painel o botão Abrir;
-        pnlBotoes.add (btnSalvar);                                                                                 //Adicionamos ao novo painel o botão Salvar;
-        pnlBotoes.add (btnPonto);                                                                                  //Adicionamos ao novo painel o botão Ponto;
-        pnlBotoes.add (btnLinha);                                                                                  //Adicionamos ao novo painel o botão Linha;
-        pnlBotoes.add (btnCirculo);                                                                                //Adicionamos ao novo painel o botão Círculo;
-        pnlBotoes.add (btnElipse);                                                                                 //Adicionamos ao novo painel o botão Elipse;
-        pnlBotoes.add (btnRetangulo);                                                                              //Adicionamos ao novo painel o botão Retangulo; 
-        pnlBotoes.add (btnQuadrado);                                                                               //Adicionamos ao novo painel o botão Quadrado;  
-        pnlBotoes.add (btnCorFigura);                                                                              //Adicionamos ao novo painel o botão CorFora;
-        pnlBotoes.add (btnCorDentro);                                                                              //Adicionamos ao novo painel o botão CorDentro;
+        pnlBotoes.add (btnAbrir);                                                                                  //Adicionamos ao novo painel o botï¿½o Abrir;
+        pnlBotoes.add (btnSalvar);                                                                                 //Adicionamos ao novo painel o botï¿½o Salvar;
+        pnlBotoes.add (btnPonto);                                                                                  //Adicionamos ao novo painel o botï¿½o Ponto;
+        pnlBotoes.add (btnLinha);                                                                                  //Adicionamos ao novo painel o botï¿½o Linha;
+        pnlBotoes.add (btnCirculo);                                                                                //Adicionamos ao novo painel o botï¿½o Cï¿½rculo;
+        pnlBotoes.add (btnElipse);                                                                                 //Adicionamos ao novo painel o botï¿½o Elipse;
+        pnlBotoes.add (btnRetangulo);                                                                              //Adicionamos ao novo painel o botï¿½o Retangulo; 
+        pnlBotoes.add (btnQuadrado);                                                                               //Adicionamos ao novo painel o botï¿½o Quadrado;  
+        pnlBotoes.add (btnCorFigura);                                                                              //Adicionamos ao novo painel o botï¿½o CorFora;
+        pnlBotoes.add (btnCorDentro);                                                                              //Adicionamos ao novo painel o botï¿½o CorDentro;
         
         
                                                                                                                    //
@@ -217,109 +217,109 @@ public class Janela extends JFrame                                              
                                                                                                                    //                                        no novo painel;
         Container cntForm = this.getContentPane();                                                                 //Instanciamos um container;
         cntForm.setLayout (new BorderLayout());                                                                    //Inserimos nele um layout;
-        cntForm.add (pnlBotoes,  BorderLayout.NORTH);                                                              //Adicionamos ao container o painel criado para os botões
+        cntForm.add (pnlBotoes,  BorderLayout.NORTH);                                                              //Adicionamos ao container o painel criado para os botï¿½es
                                                                                                                    //                                                  no norte;
         cntForm.add (pnlDesenho, BorderLayout.CENTER);                                                             //Adicionamos ao container o painel criado para os desenhos
                                                                                                                    //                                                  no centro;
         cntForm.add (pnlStatus,  BorderLayout.SOUTH);                                                              //Adicionamos ao container o painel criado para as barras de status
                                                                                                                    //                                                  no sul;
-        this.addWindowListener (new FechamentoDeJanela());                                                         //Adicionamos à janela o tratamento do evento de fechar-se;
+        this.addWindowListener (new FechamentoDeJanela());                                                         //Adicionamos ï¿½ janela o tratamento do evento de fechar-se;
                                                                                                                    //
         this.setSize (1100,600);                                                                                    //Com um tamanho inicial de 800x600,
-        this.setVisible (true);                                                                                    //tornamos a janela criada visível;
+        this.setVisible (true);                                                                                    //tornamos a janela criada visï¿½vel;
     }                                                                                                              //
 //-----------------------------------------------------------------------------------------------------------Auxiliares:  
-    protected class MeuJPanel extends    JPanel                                                                     //Versão nova nossa, que extende painel, incluindo nossas 
+    protected class MeuJPanel extends    JPanel                                                                     //Versï¿½o nova nossa, que extende painel, incluindo nossas 
                               implements MouseListener,                                                             //particularidades. Ela implementa tratamentos de eventos
                                          MouseMotionListener                                                        //e de movimento de mouse.
     {                                                                                                              //
-		private static final long serialVersionUID = -6253339646021811311L;                                        //Número de série da classe.
+		private static final long serialVersionUID = -6253339646021811311L;                                        //Nï¿½mero de sï¿½rie da classe.
                                                                                                                    //
 		public MeuJPanel()                                                                                         //Construtor:
         {                                                                                                         //
             super();                                                                                              //Aciona o construtor herdado de JPanel;
                                                                                                                   //
             this.addMouseListener       (this);                                                                   //Configura como tratadora de eventos 
-            this.addMouseMotionListener (this);                                                                   //de mouse a própria classe;
+            this.addMouseMotionListener (this);                                                                   //de mouse a prï¿½pria classe;
         }                                                                                                         //
                                                                                                                    //
-        public void paint (Graphics g)                                                                             //Método usado para "pintar" no painel as figuras feitas:
+        public void paint (Graphics g)                                                                             //Mï¿½todo usado para "pintar" no painel as figuras feitas:
         {                                                                                                         //
             for (int i=0 ; i<figuras.size(); i++)                                                                 //Para cada elemento do nosso vetor de figuras:
-                figuras.get(i).torneSeVisivel(g);                                                                //tornamos a figura da vez visível no painel.
+                figuras.get(i).torneSeVisivel(g);                                                                //tornamos a figura da vez visï¿½vel no painel.
         }                                                                                                         //
                                                                                                                    //
-        public void mousePressed (MouseEvent e)                                                                    //Quando o mouse é pressionado
+        public void mousePressed (MouseEvent e)                                                                    //Quando o mouse ï¿½ pressionado
         {                                                                                                         //tratamos esse evento assim:
         	switch(situacao) {                                                                                    //Caso estejamos...
 	        	case ESPERANDO_PONTO:                                                                             // - Esperando por um ponto:
 	        		figuras.add (new Ponto (e.getX(), e.getY(), corFigura));                                     //Adicionamos o ponto coas coordenadas do cursor no vetor de figuras
-	        		figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                      //e o tornamos visível no painel;
-	        		situacao = Situacao.DEFAULT;                                                                 //Retornamos a situação ao estado inicial;
+	        		figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                      //e o tornamos visï¿½vel no painel;
+	        		situacao = Situacao.DEFAULT;                                                                 //Retornamos a situaï¿½ï¿½o ao estado inicial;
 	        		break;                                                                                       //E pronto;
-	        	case ESPERANDO_INICIO_RETA:                                                                       // - Esperando o início de uma reta:
+	        	case ESPERANDO_INICIO_RETA:                                                                       // - Esperando o inï¿½cio de uma reta:
 	        		p1 = new Ponto (e.getX(), e.getY(), corFigura);                                              //Guardamos as coordenadas atuais do cursor no ponto antes criado;
-	        		situacao = Situacao.ESPERANDO_FIM_RETA;                                                      //Indicamos na situação que temos o início. Esperamos pelo fim;
-	        		statusBar1.setText("Mensagem: clique o ponto final da reta");                                //Indicamos ao usuário que clique no desejado ponto final da reta;
+	        		situacao = Situacao.ESPERANDO_FIM_RETA;                                                      //Indicamos na situaï¿½ï¿½o que temos o inï¿½cio. Esperamos pelo fim;
+	        		statusBar1.setText("Mensagem: clique o ponto final da reta");                                //Indicamos ao usuï¿½rio que clique no desejado ponto final da reta;
 	        		break;                                                                                       //E pronto;
 	        	case ESPERANDO_FIM_RETA:                                                                          // - Esperando o fim de uma reta:
-	        		fimLinha(e);                                                                                 //Chamamos o método auxiliar que desenha a linha;
+	        		fimLinha(e);                                                                                 //Chamamos o mï¿½todo auxiliar que desenha a linha;
 	                break;                                                                                       //E pronto;  
-	        	case ESPERANDO_INICIO_CIRCULO:                                                                    // - Esperando o início de um círculo:
+	        	case ESPERANDO_INICIO_CIRCULO:                                                                    // - Esperando o inï¿½cio de um cï¿½rculo:
 	        		p1 = new Ponto (e.getX(), e.getY(), corFigura);                                              //Guardamos as coordenadas atuais do cursor no ponto antes criado; 
-	        		situacao = Situacao.ESPERANDO_FIM_CIRCULO;                                                   //Indicamos na situação que temos o início. Esperamos pelo fim;    
-	        		statusBar1.setText("Mensagem: clique o ponto final do círculo");                             //Indicamos ao usuário que clique no desejado ponto final do círculo; 
+	        		situacao = Situacao.ESPERANDO_FIM_CIRCULO;                                                   //Indicamos na situaï¿½ï¿½o que temos o inï¿½cio. Esperamos pelo fim;    
+	        		statusBar1.setText("Mensagem: clique o ponto final do cï¿½rculo");                             //Indicamos ao usuï¿½rio que clique no desejado ponto final do cï¿½rculo; 
 	        		break;                                                                                       //E pronto;  
-	        	case ESPERANDO_FIM_CIRCULO:                                                                       // - Esperando o fim de um círculo:
-	        		fimCirculo(e);                                                                               //Chamamos o método auxiliar que desenha o círculo;
+	        	case ESPERANDO_FIM_CIRCULO:                                                                       // - Esperando o fim de um cï¿½rculo:
+	        		fimCirculo(e);                                                                               //Chamamos o mï¿½todo auxiliar que desenha o cï¿½rculo;
 	                break;                                                                                       //E pronto;  
-	        	case ESPERANDO_INICIO_ELIPSE:                                                                     // - Esperando o início de uma elipse:
+	        	case ESPERANDO_INICIO_ELIPSE:                                                                     // - Esperando o inï¿½cio de uma elipse:
 	        		p1 = new Ponto (e.getX(), e.getY(), corFigura);                                              //Guardamos as coordenadas atuais do cursor no ponto antes criado; 
-	        		situacao = Situacao.ESPERANDO_FIM_ELIPSE;                                                    //Indicamos na situação que temos o início. Esperamos pelo fim;    
-	        		statusBar1.setText("Mensagem: clique o ponto final da elipse");                              //Indicamos ao usuário que clique no desejado ponto final da elipse; 
+	        		situacao = Situacao.ESPERANDO_FIM_ELIPSE;                                                    //Indicamos na situaï¿½ï¿½o que temos o inï¿½cio. Esperamos pelo fim;    
+	        		statusBar1.setText("Mensagem: clique o ponto final da elipse");                              //Indicamos ao usuï¿½rio que clique no desejado ponto final da elipse; 
 	        		break;                                                                                       //E pronto;  
 	        	case ESPERANDO_FIM_ELIPSE:                                                                        // - Esperando o fim de uma elipse:
-	        		fimElipse(e);                                                                                //Chamamos o método auxiliar que desenha a elipse;
+	        		fimElipse(e);                                                                                //Chamamos o mï¿½todo auxiliar que desenha a elipse;
 	                break;                                                                                       //E pronto;  
-	            case ESPERANDO_INICIO_RETANGULO:                                                                  // - Esperando o início de um círculo:                               
+	            case ESPERANDO_INICIO_RETANGULO:                                                                  // - Esperando o inï¿½cio de um cï¿½rculo:                               
 	            	p1 = new Ponto (e.getX(), e.getY(), corFigura);                                              //Guardamos as coordenadas atuais do cursor no ponto antes criado;    
-	            	situacao = Situacao.ESPERANDO_FIM_RETANGULO;                                                 //Indicamos na situação que temos o início. Esperamos pelo fim;       
-	            	statusBar1.setText("Mensagem: clique o ponto final do retângulo");                           //Indicamos ao usuário que clique no desejado ponto final do círculo; 
+	            	situacao = Situacao.ESPERANDO_FIM_RETANGULO;                                                 //Indicamos na situaï¿½ï¿½o que temos o inï¿½cio. Esperamos pelo fim;       
+	            	statusBar1.setText("Mensagem: clique o ponto final do retï¿½ngulo");                           //Indicamos ao usuï¿½rio que clique no desejado ponto final do cï¿½rculo; 
 	            	break;                                                                                       //E pronto;                                                           
-	            case ESPERANDO_FIM_RETANGULO:                                                                     // - Esperando o fim de um círculo:                                  
-	            	fimRetangulo(e);                                                                             //Chamamos o método auxiliar que desenha o círculo;                   
+	            case ESPERANDO_FIM_RETANGULO:                                                                     // - Esperando o fim de um cï¿½rculo:                                  
+	            	fimRetangulo(e);                                                                             //Chamamos o mï¿½todo auxiliar que desenha o cï¿½rculo;                   
 	                break;                                                                                       //E pronto;                                                           
-	            case ESPERANDO_INICIO_QUADRADO:                                                                   // - Esperando o início de uma elipse:                               
+	            case ESPERANDO_INICIO_QUADRADO:                                                                   // - Esperando o inï¿½cio de uma elipse:                               
 	            	p1 = new Ponto (e.getX(), e.getY(), corFigura);                                              //Guardamos as coordenadas atuais do cursor no ponto antes criado;    
-	            	situacao = Situacao.ESPERANDO_FIM_QUADRADO;                                                  //Indicamos na situação que temos o início. Esperamos pelo fim;       
-	            	statusBar1.setText("Mensagem: clique o ponto final da círculo");                             //Indicamos ao usuário que clique no desejado ponto final da elipse;  
+	            	situacao = Situacao.ESPERANDO_FIM_QUADRADO;                                                  //Indicamos na situaï¿½ï¿½o que temos o inï¿½cio. Esperamos pelo fim;       
+	            	statusBar1.setText("Mensagem: clique o ponto final da cï¿½rculo");                             //Indicamos ao usuï¿½rio que clique no desejado ponto final da elipse;  
 	            	break;                                                                                       //E pronto;                                                           
 	            case ESPERANDO_FIM_QUADRADO:                                                                      // - Esperando o fim de uma elipse:                                  
-	            	fimQuadrado(e);                                                                              //Chamamos o método auxiliar que desenha a elipse;                    
+	            	fimQuadrado(e);                                                                              //Chamamos o mï¿½todo auxiliar que desenha a elipse;                    
 	                break;                                                                                       //E pronto;            
 	        	case DEFAULT:                                                                                     // - Em um caso diferente:
 	        		statusBar1.setText("Mensagem:");                                                             //Apenas retornamos o status da mensagem a nada.
 	        		break;                                                                                       //E pronto;  
-				default: break;                                                                                  // - Em um defaulf, apenas por precaução;
+				default: break;                                                                                  // - Em um defaulf, apenas por precauï¿½ï¿½o;
         	}                                                                                                     //
         }                                                                                                          //
-        public void mouseReleased (MouseEvent e)                                                                   //Quando o mouse é pressionado 
+        public void mouseReleased (MouseEvent e)                                                                   //Quando o mouse ï¿½ pressionado 
         {                                                                                                         //tratamos esse evento assim:   
-        	if(arrastado)                                                                                         //Apenas se o botão tiver sido arrastado:
+        	if(arrastado)                                                                                         //Apenas se o botï¿½o tiver sido arrastado:
 	        	switch(situacao)                                                                                 //Caso estejamos...
 	        	{                                                                                               //
-	        	case ESPERANDO_FIM_CIRCULO:                                                                     // - Esperando o fim de um círculo:                  
-	        		fimCirculo(e);	        		                                                           //Chamamos o método auxiliar que desenha o círculo;   
+	        	case ESPERANDO_FIM_CIRCULO:                                                                     // - Esperando o fim de um cï¿½rculo:                  
+	        		fimCirculo(e);	        		                                                           //Chamamos o mï¿½todo auxiliar que desenha o cï¿½rculo;   
 	        		break;                                                                                     //E pronto;                                           
 	        	case ESPERANDO_FIM_ELIPSE:                                                                      // - Esperando o fim de uma elipse:              
-	        		fimElipse(e);                                                                              //Chamamos o método auxiliar que desenha a elipse;
+	        		fimElipse(e);                                                                              //Chamamos o mï¿½todo auxiliar que desenha a elipse;
 	        		break;                                                                                     //E pronto;                                       
 	        	case ESPERANDO_FIM_RETA:                                                                        // - Esperando o fim de uma reta:                        
-	        		fimLinha(e);                                                                               //Chamamos o método auxiliar que desenha a linha;         
+	        		fimLinha(e);                                                                               //Chamamos o mï¿½todo auxiliar que desenha a linha;         
 	        		break;                                                                                     //E pronto;                                               
-				default: break;                                                                                // - Em um defaulf, apenas por precaução;   
+				default: break;                                                                                // - Em um defaulf, apenas por precauï¿½ï¿½o;   
 	        	}                                                                                               //
-        	arrastado = false;                                                                                    //Marcamos que já tratamos essa vez em que o mouse foi arrastado
+        	arrastado = false;                                                                                    //Marcamos que jï¿½ tratamos essa vez em que o mouse foi arrastado
         }                                                                                                         //                                                        e solto;
                                                                                                                    //
         public void mouseClicked (MouseEvent e)                                                                    //Tratamento de mouse,
@@ -342,25 +342,25 @@ public class Janela extends JFrame                                              
         }                                                                                                         //
     }                                                                                                              //
                                                                                                                     //
-    protected enum Situacao                                                                                         //Enumeração de situações;
+    protected enum Situacao                                                                                         //Enumeraï¿½ï¿½o de situaï¿½ï¿½es;
     {                                                                                                              //
     	ESPERANDO_PONTO,                                                                                           //Esperando que se clique no Ponto;
-    	ESPERANDO_INICIO_RETA,                                                                                     //Esperando que se clique no Início da Reta;
+    	ESPERANDO_INICIO_RETA,                                                                                     //Esperando que se clique no Inï¿½cio da Reta;
     	ESPERANDO_FIM_RETA,                                                                                        //Esperando que se clique no Fim da Reta;
-    	ESPERANDO_INICIO_CIRCULO,                                                                                  //Esperando que se clique no Início do Círculo;
-    	ESPERANDO_FIM_CIRCULO,                                                                                     //Esperando que se clique no Fim do Círculo;
-    	ESPERANDO_INICIO_ELIPSE,                                                                                   //Esperando que se clique no Início da Elipse;
+    	ESPERANDO_INICIO_CIRCULO,                                                                                  //Esperando que se clique no Inï¿½cio do Cï¿½rculo;
+    	ESPERANDO_FIM_CIRCULO,                                                                                     //Esperando que se clique no Fim do Cï¿½rculo;
+    	ESPERANDO_INICIO_ELIPSE,                                                                                   //Esperando que se clique no Inï¿½cio da Elipse;
     	ESPERANDO_FIM_ELIPSE,                                                                                      //Esperando que se clique no Fim da Elipse;
-    	ESPERANDO_INICIO_RETANGULO,                                                                                //Esperando que se clique no Início do Retângulo;
-    	ESPERANDO_FIM_RETANGULO,                                                                                   //Esperando que se clique no Fim do Retângulo;   
-    	ESPERANDO_INICIO_QUADRADO,                                                                                 //Esperando que se clique no Início da Quadrado; 
+    	ESPERANDO_INICIO_RETANGULO,                                                                                //Esperando que se clique no Inï¿½cio do Retï¿½ngulo;
+    	ESPERANDO_FIM_RETANGULO,                                                                                   //Esperando que se clique no Fim do Retï¿½ngulo;   
+    	ESPERANDO_INICIO_QUADRADO,                                                                                 //Esperando que se clique no Inï¿½cio da Quadrado; 
     	ESPERANDO_FIM_QUADRADO,                                                                                    //Esperando que se clique no Fim da Quadrado;    
-    	DEFAULT;                                                                                                   //Esperando que se clique em algum botão;
+    	DEFAULT;                                                                                                   //Esperando que se clique em algum botï¿½o;
     }                                                                                                              //
     //---------------------------//                                                                                //
-    protected class SalvarDesenho implements ActionListener                                                        //Classe que trata o evento do botão Ponto:
+    protected class SalvarDesenho implements ActionListener                                                        //Classe que trata o evento do botï¿½o Ponto:
     {                                                                                                              //
-          public void actionPerformed (ActionEvent e)                                                              //Método no formato requerido pela implementação:
+          public void actionPerformed (ActionEvent e)                                                              //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o:
           {   
         	  Parceiro servidor = CriarConexao();
         	  Vector<String> desenho = new Vector<String>();												      //
@@ -379,15 +379,19 @@ public class Janela extends JFrame                                              
         	  PedidoDeSalvamento salvar = new PedidoDeSalvamento(email,nome,desenho);        
         	  try {
 				servidor.receba(salvar);
-			      } catch (Exception e1) {
+			  } catch (Exception e1) {
 				e1.printStackTrace();
-			      }
+			  }
+        	  pnlDesenho.getGraphics().clearRect(0, 0, pnlDesenho.getWidth(), pnlDesenho.getHeight());
+        	  try {
+				servidor.adeus();
+			  } catch (Exception e1) {e1.printStackTrace();}
           }                                                                                                       //
     } 
     
-    protected class AbrirDesenho implements ActionListener                                                        //Classe que trata o evento do botão Ponto:
+    protected class AbrirDesenho implements ActionListener                                                        //Classe que trata o evento do botï¿½o Ponto:
     {                                                                                                              //
-          public void actionPerformed (ActionEvent e)                                                              //Método no formato requerido pela implementação:
+          public void actionPerformed (ActionEvent e)                                                              //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o:
           {               
         	  DesenhoSalvo desenho = new DesenhoSalvo(new Vector<String>());
         	  Parceiro servidor = CriarConexao();
@@ -407,6 +411,7 @@ public class Janela extends JFrame                                              
                   }
               
               try {
+            	  for(;!(servidor.espie() instanceof DesenhoSalvo);) {}
             	  desenho = (DesenhoSalvo)servidor.envie();
               	} catch (Exception e1) {
 				e1.printStackTrace();
@@ -441,8 +446,13 @@ public class Janela extends JFrame                                              
             		  figuraFinal = new Retangulo(figuraAtual);
             		  break;
             	  }
-            	  figuras.add(i, figuraFinal);  
+            	  figuras.add(i, figuraFinal);
+            	  pnlDesenho.getGraphics().clearRect(0, 0, pnlDesenho.getWidth(), pnlDesenho.getHeight());
+            	  figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics()); 
         	  }
+              try {
+  				servidor.adeus();
+  			  } catch (Exception e1) {e1.printStackTrace();}
         		  //figuras.add(i, new desenhos.elementAt(i));
         	 }
         	  
@@ -502,157 +512,157 @@ public class Janela extends JFrame                                              
     }
     //------------------------//
     
-    protected class DesenhoDePonto implements ActionListener                                                        //Classe que trata o evento do botão Ponto:
+    protected class DesenhoDePonto implements ActionListener                                                        //Classe que trata o evento do botï¿½o Ponto:
     {                                                                                                              //
-          public void actionPerformed (ActionEvent e)                                                              //Método no formato requerido pela implementação:
+          public void actionPerformed (ActionEvent e)                                                              //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o:
           {                                                                                                       //
               situacao = Situacao.ESPERANDO_PONTO;                                                                //Situamos o programa na espera de um ponto;
                                                                                                                   //
-              statusBar1.setText("Mensagem: clique o local do ponto desejado");                                   //Indicamos na barra de status a situação;
+              statusBar1.setText("Mensagem: clique o local do ponto desejado");                                   //Indicamos na barra de status a situaï¿½ï¿½o;
           }                                                                                                       //
     }                                                                                                              //
                                                                                                                     //
-    protected class DesenhoDeReta implements ActionListener                                                         //Classe que trata o evento do botão Reta:
+    protected class DesenhoDeReta implements ActionListener                                                         //Classe que trata o evento do botï¿½o Reta:
     {                                                                                                              //
-        public void actionPerformed (ActionEvent e)                                                                //Método no formato requerido pela implementação:
+        public void actionPerformed (ActionEvent e)                                                                //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o:
         {                                                                                                         //                                                
         	situacao = Situacao.ESPERANDO_INICIO_RETA;                                                            //Situamos o programa na espera de uma reta;      
                                                                                                                   //                                                
-            statusBar1.setText("Mensagem: clique o ponto inicial da reta");                                       //Indicamos na barra de status a situação;        
+            statusBar1.setText("Mensagem: clique o ponto inicial da reta");                                       //Indicamos na barra de status a situaï¿½ï¿½o;        
         }                                                                                                         //
     }                                                                                                              //
                                                                                                                     //
-    protected class DesenhoDeCirculo implements ActionListener                                                      //Classe que trata o evento do botão Círculo:
+    protected class DesenhoDeCirculo implements ActionListener                                                      //Classe que trata o evento do botï¿½o Cï¿½rculo:
     {                                                                                                              //
-    	public void actionPerformed (ActionEvent e)                                                                //Método no formato requerido pela implementação:
+    	public void actionPerformed (ActionEvent e)                                                                //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o:
     	{                                                                                                         //                                                
-    		situacao = Situacao.ESPERANDO_INICIO_CIRCULO;                                                         //Situamos o programa na espera de um círculo;      
+    		situacao = Situacao.ESPERANDO_INICIO_CIRCULO;                                                         //Situamos o programa na espera de um cï¿½rculo;      
                                                                                                                   //                                                
-            statusBar1.setText("Mensagem: clique o ponto inicial do círculo");                                    //Indicamos na barra de status a situação;        
+            statusBar1.setText("Mensagem: clique o ponto inicial do cï¿½rculo");                                    //Indicamos na barra de status a situaï¿½ï¿½o;        
     	}                                                                                                         //
     }                                                                                                              //
                                                                                                                     //
-    protected class DesenhoDeElipse implements ActionListener                                                       //Classe que trata o evento do botão Elipse:
+    protected class DesenhoDeElipse implements ActionListener                                                       //Classe que trata o evento do botï¿½o Elipse:
     {                                                                                                              //
-    	public void actionPerformed (ActionEvent e)                                                                //Método no formato requerido pela implementação:
+    	public void actionPerformed (ActionEvent e)                                                                //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o:
     	{                                                                                                         //                                                
     		situacao = Situacao.ESPERANDO_INICIO_ELIPSE;                                                          //Situamos o programa na espera de uma elipse;      
                                                                                                                   //                                                
-            statusBar1.setText("Mensagem: clique o ponto inicial da elipse");                                     //Indicamos na barra de status a situação;        
+            statusBar1.setText("Mensagem: clique o ponto inicial da elipse");                                     //Indicamos na barra de status a situaï¿½ï¿½o;        
     	}                                                                                                         //
 	}                                                                                                              //
 	                                                                                                                //
-	protected class DesenhoDeRetangulo implements ActionListener                                                    //Classe que trata o evento do botão Retângulo:
+	protected class DesenhoDeRetangulo implements ActionListener                                                    //Classe que trata o evento do botï¿½o Retï¿½ngulo:
 	{                                                                                                              //
-		public void actionPerformed (ActionEvent e)                                                                //Método no formato requerido pela implementação:
+		public void actionPerformed (ActionEvent e)                                                                //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o:
 		{                                                                                                         //                                                
-			situacao = Situacao.ESPERANDO_INICIO_RETANGULO;                                                       //Situamos o programa na espera de um retângulo;      
+			situacao = Situacao.ESPERANDO_INICIO_RETANGULO;                                                       //Situamos o programa na espera de um retï¿½ngulo;      
 			                                                                                                      //                                                
-			statusBar1.setText("Mensagem: clique o ponto inicial do retangulo");                                  //Indicamos na barra de status a situação;        
+			statusBar1.setText("Mensagem: clique o ponto inicial do retangulo");                                  //Indicamos na barra de status a situaï¿½ï¿½o;        
 		}                                                                                                         //
 	}                                                                                                              //
 	                                                                                                                //
-	protected class DesenhoDeQuadrado implements ActionListener                                                     //Classe que trata o evento do botão Quadrado:
+	protected class DesenhoDeQuadrado implements ActionListener                                                     //Classe que trata o evento do botï¿½o Quadrado:
 	{                                                                                                              //
-		public void actionPerformed (ActionEvent e)                                                                //Método no formato requerido pela implementação:
+		public void actionPerformed (ActionEvent e)                                                                //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o:
 		{                                                                                                         //                                                
 			situacao = Situacao.ESPERANDO_INICIO_QUADRADO;                                                         //Situamos o programa na espera de uma quadrado;      
 	                                                                                                              //                                                
-			statusBar1.setText("Mensagem: clique o ponto inicial do quadrado");                                   //Indicamos na barra de status a situação;        
+			statusBar1.setText("Mensagem: clique o ponto inicial do quadrado");                                   //Indicamos na barra de status a situaï¿½ï¿½o;        
 		}                                                                                                         //
 	}                                                                                                              //
                                                                                                                     //
-    protected class PegarCorDeFora implements ActionListener                                                        //Classe que trata o evento do botão CorFora:
+    protected class PegarCorDeFora implements ActionListener                                                        //Classe que trata o evento do botï¿½o CorFora:
     {                                                                                                              //
-    	public void actionPerformed (ActionEvent e)                                                                //Método no formato requerido pela implementação:
+    	public void actionPerformed (ActionEvent e)                                                                //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o:
     	{                                                                                                         //                                                
     		corFigura = JColorChooser.showDialog(Janela.this, "Selecione uma cor", corFigura);                    //Exibimos uma janela para a escolha de uma cor
-    		                                                                                                      //              e guardamos seu retorno na variável de cor;
-    		dentro = false;                                                                                       //Marcamos que estamos no modo de figuras não preenchidas;    
+    		                                                                                                      //              e guardamos seu retorno na variï¿½vel de cor;
+    		dentro = false;                                                                                       //Marcamos que estamos no modo de figuras nï¿½o preenchidas;    
     	}                                                                                                         //    
     }                                                                                                              //
                                                                                                                     //
-    protected class PegarCorDeDentro implements ActionListener                                                      //Classe que trata o evento do botão CorDentro:
+    protected class PegarCorDeDentro implements ActionListener                                                      //Classe que trata o evento do botï¿½o CorDentro:
     {                                                                                                              //
-    	public void actionPerformed (ActionEvent e)                                                                //Método no formato requerido pela implementação:
+    	public void actionPerformed (ActionEvent e)                                                                //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o:
     	{                                                                                                         //                                                
     		corFigura = JColorChooser.showDialog(Janela.this, "Selecione uma cor", corFigura);                    //Exibimos uma janela para a escolha de uma cor                
-    		dentro = true;                                                                                        //              e guardamos seu retorno na variável de cor;    
+    		dentro = true;                                                                                        //              e guardamos seu retorno na variï¿½vel de cor;    
     	}                                                                                                         //Marcamos que estamos no modo de figuras preenchidas;     
     }                                                                                                              //
                                                                                                                     //
     protected class FechamentoDeJanela extends WindowAdapter                                                        //Classe que trata o fechamento da janela:
     {                                                                                                              //
-        public void windowClosing (WindowEvent e)                                                                  //Método no formato requerido pela implementação: 
+        public void windowClosing (WindowEvent e)                                                                  //Mï¿½todo no formato requerido pela implementaï¿½ï¿½o: 
         {                                                                                                         //
             System.exit(0);                                                                                       //Encerramos a janela;
         }                                                                                                         //
     }                                                                                                              //
                                                                                                                     //
-    protected void fimLinha(MouseEvent e)                                                                           //Método auxiliar, para desenhar a linha:
+    protected void fimLinha(MouseEvent e)                                                                           //Mï¿½todo auxiliar, para desenhar a linha:
     {                                                                                                              //
-    	situacao = Situacao.DEFAULT;                                                                               //Retornamos a situação do programa ao default;
+    	situacao = Situacao.DEFAULT;                                                                               //Retornamos a situaï¿½ï¿½o do programa ao default;
         figuras.add (new Linha(p1.getX(), p1.getY(), e.getX(), e.getY(), corFigura));                              //Adicionamos ao vetor de figuras uma linha, cuja coordenada
-                                                                                                                   //inicial vem do ponto em que guardamos o começo da linha e a 
-                                                                                                                   //final é extraída do evendo de mouse, passado como parâmetro;
-        figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                                    //Tornamos a nova linha visível no painel;
+                                                                                                                   //inicial vem do ponto em que guardamos o comeï¿½o da linha e a 
+                                                                                                                   //final ï¿½ extraï¿½da do evendo de mouse, passado como parï¿½metro;
+        figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                                    //Tornamos a nova linha visï¿½vel no painel;
         statusBar1.setText("Mensagem:");                                                                           //Retornamos a barra de mensagem ao default;
     }                                                                                                              //
                                                                                                                     //
-    protected void fimCirculo(MouseEvent e)                                                                         //Método auxiliar, para desenhar o círculo:
+    protected void fimCirculo(MouseEvent e)                                                                         //Mï¿½todo auxiliar, para desenhar o cï¿½rculo:
     {                                                                                                              //
-    	situacao = Situacao.DEFAULT;                                                                               //Retornamos a situação do programa ao default; 
-		int dimensao;                                                                                              //Criamos variável para guardar a dimensão do círculo;
-		if((e.getX() - p1.getX()) < (e.getY() - p1.getY()))                                                        //Se o lado, dado pela seleção do usuário, vertical for maior:
-			dimensao = (e.getY() - p1.getY());                                                                    //escolhemos ele como dimensão;
-		else                                                                                                       //caso o contrário:
+    	situacao = Situacao.DEFAULT;                                                                               //Retornamos a situaï¿½ï¿½o do programa ao default; 
+		int dimensao;                                                                                              //Criamos variï¿½vel para guardar a dimensï¿½o do cï¿½rculo;
+		if((e.getX() - p1.getX()) < (e.getY() - p1.getY()))                                                        //Se o lado, dado pela seleï¿½ï¿½o do usuï¿½rio, vertical for maior:
+			dimensao = (e.getY() - p1.getY());                                                                    //escolhemos ele como dimensï¿½o;
+		else                                                                                                       //caso o contrï¿½rio:
 			dimensao = (e.getX() - p1.getX());                                                                    //sempre escolhemos o maior lado.
-		Circulo circulo = new Circulo(p1.getX(), p1.getY(), dimensao, corFigura);                                  //Criamos um círculo, cuja coordenada   
-		                                                                                                           //inicial vem do ponto em que guardamos o começo da linha e a   
-                                                                                                                   //final é extraída do evendo de mouse, passado como parâmetro;
-        circulo.setPreenchido(dentro); 																			   //Informamos se o círculo deve ser preenchido ou não;
-        figuras.add (circulo);                                                                                     //Adicionamos ao vetor de figuras o círculo;
-        figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                                    //Tornamos o novo círculo visível no painel;                      
+		Circulo circulo = new Circulo(p1.getX(), p1.getY(), dimensao, corFigura);                                  //Criamos um cï¿½rculo, cuja coordenada   
+		                                                                                                           //inicial vem do ponto em que guardamos o comeï¿½o da linha e a   
+                                                                                                                   //final ï¿½ extraï¿½da do evendo de mouse, passado como parï¿½metro;
+        circulo.setPreenchido(dentro); 																			   //Informamos se o cï¿½rculo deve ser preenchido ou nï¿½o;
+        figuras.add (circulo);                                                                                     //Adicionamos ao vetor de figuras o cï¿½rculo;
+        figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                                    //Tornamos o novo cï¿½rculo visï¿½vel no painel;                      
         statusBar1.setText("Mensagem:");                                                                           //Retornamos a barra de mensagem ao default;                    
     }                                                                                                              //
                                                                                                                     //
     protected void fimElipse(MouseEvent e)                                                                          //
     {                                                                                                              //
-    	situacao = Situacao.DEFAULT;                                                                               //Retornamos a situação do programa ao default;                
+    	situacao = Situacao.DEFAULT;                                                                               //Retornamos a situaï¿½ï¿½o do programa ao default;                
         Elipse elipse = new Elipse(p1.getX(), p1.getY(), (e.getX() - p1.getX()),                                   //Criamos uma uma elipse, cuja coordenada   
-        		(e.getY() - p1.getY()), corFigura);                                                                //inicial vem do ponto em que guardamos o começo da linha e a  
-                                                                                                                   //final é extraída do evendo de mouse, passado como parâmetro;
-		elipse.setPreenchido(dentro);                                                                              //Informamos se a elipse deve ser preenchido ou não;     
+        		(e.getY() - p1.getY()), corFigura);                                                                //inicial vem do ponto em que guardamos o comeï¿½o da linha e a  
+                                                                                                                   //final ï¿½ extraï¿½da do evendo de mouse, passado como parï¿½metro;
+		elipse.setPreenchido(dentro);                                                                              //Informamos se a elipse deve ser preenchido ou nï¿½o;     
 		figuras.add (elipse);                                                                                      //Adicionamos ao vetor de figuras a elipse;              
-		figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                                    //Tornamos a nova linha visível no painel;
+		figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                                    //Tornamos a nova linha visï¿½vel no painel;
 		statusBar1.setText("Mensagem:");                                                                           //Retornamos a barra de mensagem ao default;               
     }                                                                                                              //
-    protected void fimQuadrado(MouseEvent e)                                                                       //Método auxiliar, para desenhar o quadrado:                        
+    protected void fimQuadrado(MouseEvent e)                                                                       //Mï¿½todo auxiliar, para desenhar o quadrado:                        
     {                                                                                                              //                                                                  
-    	situacao = Situacao.DEFAULT;                                                                               //Retornamos a situação do programa ao default;                     
-    	int dimensao;                                                                                              //Criamos variável para guardar a dimensão do quadrado;              
-    	if((e.getX() - p1.getX()) < (e.getY() - p1.getY()))                                                        //Se o lado, dado pela seleção do usuário, vertical for maior:      
-    		dimensao = (e.getY() - p1.getY());                                                                    //escolhemos ele como dimensão;                                      
-    	else                                                                                                       //caso o contrário:                                                 
+    	situacao = Situacao.DEFAULT;                                                                               //Retornamos a situaï¿½ï¿½o do programa ao default;                     
+    	int dimensao;                                                                                              //Criamos variï¿½vel para guardar a dimensï¿½o do quadrado;              
+    	if((e.getX() - p1.getX()) < (e.getY() - p1.getY()))                                                        //Se o lado, dado pela seleï¿½ï¿½o do usuï¿½rio, vertical for maior:      
+    		dimensao = (e.getY() - p1.getY());                                                                    //escolhemos ele como dimensï¿½o;                                      
+    	else                                                                                                       //caso o contrï¿½rio:                                                 
     		dimensao = (e.getX() - p1.getX());                                                                    //sempre escolhemos o maior lado.                                    
     	Quadrado quadrado = new Quadrado(p1.getX(), p1.getY(), dimensao, corFigura);                              //Criamos um quadrado, cuja coordenada                               
-    	                                                                                                           //inicial vem do ponto em que guardamos o começo da linha e a       
-                                                                                                                   //final é extraída do evendo de mouse, passado como parâmetro;      
-    	quadrado.setPreenchido(dentro); 																		   //Informamos se o quadrado deve ser preenchido ou não;               
+    	                                                                                                           //inicial vem do ponto em que guardamos o comeï¿½o da linha e a       
+                                                                                                                   //final ï¿½ extraï¿½da do evendo de mouse, passado como parï¿½metro;      
+    	quadrado.setPreenchido(dentro); 																		   //Informamos se o quadrado deve ser preenchido ou nï¿½o;               
         figuras.add (quadrado);                                                                                    //Adicionamos ao vetor de figuras o quadrado;                        
-        figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                                    //Tornamos o novo quadrado visível no painel;                        
+        figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                                    //Tornamos o novo quadrado visï¿½vel no painel;                        
         statusBar1.setText("Mensagem:");                                                                           //Retornamos a barra de mensagem ao default;                        
     }                                                                                                              //                                                                  
                                                                                                                     //                                                                 
     protected void fimRetangulo(MouseEvent e)                                                                       //                                                                 
     {                                                                                                              //                                                                  
-    	situacao = Situacao.DEFAULT;                                                                               //Retornamos a situação do programa ao default;                     
+    	situacao = Situacao.DEFAULT;                                                                               //Retornamos a situaï¿½ï¿½o do programa ao default;                     
         Retangulo retangulo = new Retangulo(p1.getX(), p1.getY(), (e.getX() - p1.getX()),                          //Criamos um retangulo, cuja coordenada                           
-        		(e.getY() - p1.getY()), corFigura);                                                                //inicial vem do ponto em que guardamos o começo da linha e a       
-                                                                                                                   //final é extraída do evendo de mouse, passado como parâmetro;      
-        retangulo.setPreenchido(dentro);                                                                           //Informamos se o retangulo deve ser preenchido ou não;               
+        		(e.getY() - p1.getY()), corFigura);                                                                //inicial vem do ponto em que guardamos o comeï¿½o da linha e a       
+                                                                                                                   //final ï¿½ extraï¿½da do evendo de mouse, passado como parï¿½metro;      
+        retangulo.setPreenchido(dentro);                                                                           //Informamos se o retangulo deve ser preenchido ou nï¿½o;               
     	figuras.add (retangulo);                                                                                   //Adicionamos ao vetor de figuras o retangulo;                        
-    	figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                                    //Tornamos a nova linha visível no painel;                          
+    	figuras.get(figuras.size()-1).torneSeVisivel(pnlDesenho.getGraphics());                                    //Tornamos a nova linha visï¿½vel no painel;                          
     	statusBar1.setText("Mensagem:");                                                                           //Retornamos a barra de mensagem ao default;                        
     }                                                                                                              //         
 }                                                                                                                   //
